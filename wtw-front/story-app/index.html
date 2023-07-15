@@ -1,0 +1,53 @@
+<!--
+ * @Date: 2023-01-15 12:08:01
+ * @LastEditors: aei(imaei@foxmail.com)
+ * @LastEditTime: 2023-04-12 21:57:03
+ * @FilePath: \wtw-front\wtw-story\index.html
+ * @description: 
+--><!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>趣读</title>
+    <script>
+      var global = {} 
+    </script>
+    <script crossorigin="">import('/story-app/assets/index-3295509d.js').finally(() => {
+            
+    const qiankunLifeCycle = window.moudleQiankunAppLifeCycles && window.moudleQiankunAppLifeCycles['story-app'];
+    if (qiankunLifeCycle) {
+      window.proxy.vitemount((props) => qiankunLifeCycle.mount(props));
+      window.proxy.viteunmount((props) => qiankunLifeCycle.unmount(props));
+      window.proxy.vitebootstrap(() => qiankunLifeCycle.bootstrap());
+      window.proxy.viteupdate((props) => qiankunLifeCycle.update(props));
+    }
+  
+          })</script>
+    <link rel="stylesheet" href="/story-app/assets/index-dbf2b79b.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    
+  
+
+<script>
+  const createDeffer = (hookName) => {
+    const d = new Promise((resolve, reject) => {
+      window.proxy && (window.proxy[`vite${hookName}`] = resolve)
+    })
+    return props => d.then(fn => fn(props));
+  }
+  const bootstrap = createDeffer('bootstrap');
+  const mount = createDeffer('mount');
+  const unmount = createDeffer('unmount');
+  const update = createDeffer('update');
+
+  ;(global => {
+    global.qiankunName = 'story-app';
+    global['story-app'] = {
+      bootstrap,
+      mount,
+      unmount,
+      update
+    };
+  })(window);
+</script></body></html>

@@ -1,0 +1,16 @@
+[2023-05-14T20:06:48.439] [ERROR] error - chat GPT Token 过期了
+[2023-05-14T23:43:39.964] [ERROR] error - chat GPT Token 过期了
+[2023-05-14T23:52:20.593] [ERROR] error - {
+  err_detail: 'Params error.',
+  err_msg: 'parameter error.',
+  err_no: 501,
+  err_subcode: 29,
+  tts_logid: 2328917673
+}
+[2023-05-14T23:52:49.842] [ERROR] error - {
+  err_detail: 'Params error.',
+  err_msg: 'parameter error.',
+  err_no: 501,
+  err_subcode: 29,
+  tts_logid: 110418227
+}

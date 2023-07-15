@@ -1,0 +1,37 @@
+version: '3'
+
+services: 
+  #node服务器
+  nodejs: 
+    # 指定以当前目录下的Dockerfile文件打包成镜像
+    build: 
+      context: ./wtw-node
+      dockerfile: Dockerfile
+    image: nodejs
+    container_name: nodejs
+    restart: unless-stopped
+    ports: 
+      - "9003:9003"
+    networks: 
+      - app-network
+    extra_hosts:
+      - host.docker.internal:host-gateway
+  
+  # 新增静态服务器
+  webServer:
+    build: 
+      context: ./wtw-front
+      dockerfile: Dockerfile
+    image: nginx
+    container_name: webServer
+    restart: unless-stopped
+    ports: 
+      - "80:80"
+    depends_on: 
+      - nodejs
+    networks: 
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
